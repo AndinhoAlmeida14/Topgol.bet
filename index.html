@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPGOL.BET - Apostas Fictícias em Futebol</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1e90ff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .jogo {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .jogo h3 {
+      margin-top: 0;
+    }
+    .odds {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .odd-btn {
+      padding: 10px 15px;
+      background: #1e90ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .odd-btn:hover {
+      background: #006ad1;
+    }
+    .saldo {
+      background: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .historico {
+      background: #fff;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TOPGOL.BET</h1>
+    <p>Apostas fictícias em Futebol - Vitórias, Empate, Cantos, Cartões</p>
+  </header>
+
+  <div class="container">
+    <div class="saldo">
+      Saldo: R$ <span id="saldo">100.00</span>
+    </div>
+
+    <div class="jogo">
+      <h3>Flamengo x Palmeiras</h3>
+      <p>Campeonato Brasileiro - Hoje, 18h</p>
+      <div class="odds">
+        <button class="odd-btn" onclick="apostar('Vitória Flamengo', 2.10)">Vitória Flamengo (2.10)</button>
+        <button class="odd-btn" onclick="apostar('Empate', 3.00)">Empate (3.00)</button>
+        <button class="odd-btn" onclick="apostar('Vitória Palmeiras', 2.90)">Vitória Palmeiras (2.90)</button>
+      </div>
+      <div class="odds">
+        <button class="odd-btn" onclick="apostar('+6 Cantos', 1.80)">+6 Cantos (1.80)</button>
+        <button class="odd-btn" onclick="apostar('+4 Cartões', 2.20)">+4 Cartões (2.20)</button>
+      </div>
+    </div>
+
+    <div class="jogo">
+      <h3>Corinthians x São Paulo</h3>
+      <p>Campeonato Paulista - Amanhã, 20h</p>
+      <div class="odds">
+        <button class="odd-btn" onclick="apostar('Vitória Corinthians', 2.40)">Vitória Corinthians (2.40)</button>
+        <button class="odd-btn" onclick="apostar('Empate', 3.10)">Empate (3.10)</button>
+        <button class="odd-btn" onclick="apostar('Vitória São Paulo', 2.70)">Vitória São Paulo (2.70)</button>
+      </div>
+      <div class="odds">
+        <button class="odd-btn" onclick="apostar('+7 Cantos', 1.95)">+7 Cantos (1.95)</button>
+        <button class="odd-btn" onclick="apostar('+3 Cartões', 2.10)">+3 Cartões (2.10)</button>
+      </div>
+    </div>
+
+    <div class="historico">
+      <h4>Histórico de Apostas</h4>
+      <ul id="historico"></ul>
+    </div>
+  </div>
+
+  <script>
+    let saldo = 100.00;
+    const saldoSpan = document.getElementById('saldo');
+    const historico = document.getElementById('historico');
+
+    function apostar(opcao, odd) {
+      const valor = 10.00; // valor fixo da aposta fictícia
+      if (saldo >= valor) {
+        saldo -= valor;
+        saldoSpan.textContent = saldo.toFixed(2);
+        const li = document.createElement('li');
+        li.textContent = `Aposta: ${opcao} | Odd: ${odd} | Valor: R$ 10.00`;
+        historico.appendChild(li);
+      } else {
+        alert('Saldo insuficiente!');
+      }
+    }
+  </script>
+</body>
+</html>
